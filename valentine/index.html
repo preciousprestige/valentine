@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: pink;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+        }
+        .no {
+            background-color: red;
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="your-song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <div class="container" id="intro">
+        <h1>How You Make Me Feel 💖</h1>
+        <p>Even though we barely talk and I’m not even in the country, you still manage to brighten my days in ways you don’t even realize. Just the thought of you brings a smile to my face, and I find myself wishing for the chance to know you better. You’re special, and I hope this small gesture shows that. ❤️</p>
+        <button class="btn yes" onclick="nextPage()">Continue</button>
+    </div>
+    
+    <div class="container hidden" id="question">
+        <h1>Will you be my Valentine? ❤️</h1>
+        <div class="buttons">
+            <button class="btn yes" onclick="acceptValentine()">Yes</button>
+            <button class="btn no" onclick="declineValentine()">No</button>
+        </div>
+    </div>
+    
+    <div class="container hidden" id="thankYou">
+        <h1>Thank You! 💖</h1>
+        <h2>   i am not physically in the country but flowers you would recieve and a dinner for one
+        </h2>
+        <img src="rosess.png" alt="Rose" width="200">
+    </div>
+    
+    <script>
+        function nextPage() {
+            document.getElementById('intro').classList.add('hidden');
+            document.getElementById('question').classList.remove('hidden');
+        }
+        
+        function acceptValentine() {
+            document.getElementById('question').classList.add('hidden');
+            document.getElementById('thankYou').classList.remove('hidden');
+        }
+
+        function declineValentine() {
+            let message = document.createElement('div');
+            message.textContent = "Keep playing... 😏";
+            message.style.position = "fixed";
+            message.style.top = "50%";
+            message.style.left = "50%";
+            message.style.transform = "translate(-50%, -50%)";
+            message.style.backgroundColor = "white";
+            message.style.padding = "20px";
+            message.style.borderRadius = "10px";
+            message.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.1)";
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
